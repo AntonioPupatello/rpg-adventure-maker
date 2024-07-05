@@ -46,7 +46,29 @@ export const userFormConfig: FormConfig[] = [
       Validators.maxLength(100),
     ],
   },
+  {
+    name: 'type',
+    label: 'Tipo utente',
+    type: 'select',
+    options: [
+      { value: 'master', label: 'Master' },
+      { value: 'player', label: 'Player' },
+    ],
+    validators: [
+      Validators.required,
+    ],
+  }
 ];
+
+export const signupPlayerConfig: FormConfig[] = [
+  ...userFormConfig,
+  {
+    name: 'partyId',
+    label: 'Codice Party ID',
+    type: 'text',
+    validators: [Validators.required],
+  },
+]
 
 export const userSignupFormConfig: FormConfig[] = [
   ...userFormConfig,
@@ -61,7 +83,7 @@ export const userSignupFormConfig: FormConfig[] = [
     label: 'Conferma Password',
     type: 'password',
     validators: [Validators.required],
-  },
+  }
 ];
 
 

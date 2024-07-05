@@ -17,7 +17,13 @@
       [formControlName]="field.name"
       [id]="field.name"
     ></textarea>
-    } }
+    } @case ('select'){
+    <mat-select>
+      @for (option of field.options; track option) {
+        <mat-option [value]="option.value">{{option.label}}</mat-option>
+      }
+    </mat-select>
+      } }
 
     <mat-error>
       <app-error

@@ -7,8 +7,8 @@ import { AuthService } from '../../../core/services/auth.service';
 import { take, takeUntil } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmComponent } from '../../../shared/confirm/confirm.component';
-import { globalSignupFormConfig } from '../../../core/configs/auth';
-import { userSignupFormConfig } from '../../../core/configs/users';
+import { globalSignupFormConfig, signUpFormConfig, signupFormPlayerConfig } from '../../../core/configs/auth';
+import { signupPlayerConfig, userFormConfig, userSignupFormConfig } from '../../../core/configs/users';
 import { User } from '../../../core/models/users';
 
 
@@ -22,7 +22,7 @@ export class SignupComponent
   extends EssentialComponent
   implements CanDeactivateComponent
 {
-  formConfig = userSignupFormConfig;
+  formConfig = signUpFormConfig;
   globalValidators = globalSignupFormConfig;
   authService = inject(AuthService);
   canLeave = true;
@@ -52,7 +52,12 @@ export class SignupComponent
   }
 
   monitorFormState(form: FormGroup) {
-
+    console.log(form.value);
+    if (form.value.type === 'player') {
+      this.formConfig = signupFormPlayerConfig;
+    } else {
+      this.formConfig = signUpFormConfig;
+    }
     this.canLeave = !(form.touched && form.dirty) && form.valid;
   }
 }

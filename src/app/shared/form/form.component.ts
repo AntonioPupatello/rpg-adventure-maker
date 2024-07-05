@@ -10,6 +10,7 @@ export interface FormConfig {
   name: string,
   label: string,
   type: string,
+  options?: { label: string, value: any}[],
   connectedTo?: string,
   validators?: ValidatorFn | ValidatorFn[],
   errorMessage?: string
@@ -59,6 +60,22 @@ export class FormComponent<T> extends EssentialComponent implements OnInit, Afte
           this.formState.emit(this.form)
         })
       }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['formConfig']) {
+      const formValue = this.form?.value;
+      // create a new form object
+      this.form = new FormGroup(this.generateForm(this.formConfig), {
+        validators: this.globalValidators,
+      });
+      //patch with old values
+      if (formValue) {
+        this.form.patchValue(formValue);
+      }
+      //reset subscription
+      // this.refreshFormStateSubs(true);
+    }
   }
 
   submit(){

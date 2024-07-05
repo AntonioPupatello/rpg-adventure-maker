@@ -8,6 +8,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { MaterialModule } from './material.module';
 import { HeaderComponent } from './header/header.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 

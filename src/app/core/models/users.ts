@@ -7,7 +7,8 @@ export type User = {
     phone: string,
     notes: string,
     password?: string,
-    confirmPassword?: string
+    confirmPassword?: string,
+    type: 'master' | 'player'
 }
 
 export interface UserAuthRes {
