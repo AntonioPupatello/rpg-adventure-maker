@@ -10,6 +10,7 @@ import { ConfirmComponent } from '../../../shared/confirm/confirm.component';
 import { globalSignupFormConfig, signUpFormConfig, signupFormPlayerConfig } from '../../../core/configs/auth';
 import { signupPlayerConfig, userFormConfig, userSignupFormConfig } from '../../../core/configs/users';
 import { User } from '../../../core/models/users';
+import { PartyIdDialogComponent } from './party-id-dialog.component';
 
 
 @Component({
@@ -36,9 +37,20 @@ export class SignupComponent
       .signup(currentUser)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (data) => {
+        next: (data:any) => {
           this.canLeave = true;
-          this.router.navigate(['/']);
+          if(data.user.type === 'master') {
+            this.dialog.open(PartyIdDialogComponent, {
+              data: {
+                title: 'Party ID',
+                content: 'Copia il tuo party Id per condividere la partita' ,
+                partyId: data.user.partyId
+              },
+            })
+          }else{
+            this.router.navigate(['/']);
+          }
+          
         },
         error: (err) => {
           console.log('erroneous', err.message);
@@ -52,7 +64,7 @@ export class SignupComponent
   }
 
   monitorFormState(form: FormGroup) {
-    console.log(form.value);
+    console.log('form',form.value);
     if (form.value.type === 'player') {
       this.formConfig = signupFormPlayerConfig;
     } else {

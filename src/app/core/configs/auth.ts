@@ -14,18 +14,6 @@ export const globalSignupFormConfig: ValidatorFn[] = [
       validators: [Validators.required, Validators.email],
     },
     {
-      name: 'type',
-      label: 'Tipo utente',
-      type: 'select',
-      options: [
-        { value: 'master', label: 'Master' },
-        { value: 'player', label: 'Player' },
-      ],
-      validators: [
-        Validators.required,
-      ],
-    },
-    {
       name: 'password',
       label: 'Password',
       type: 'password',
@@ -36,6 +24,18 @@ export const globalSignupFormConfig: ValidatorFn[] = [
       label: 'Conferma Password',
       type: 'password',
       validators: [Validators.required],
+    },
+    {
+      name: 'type',
+      label: 'Tipo utente',
+      type: 'select',
+      options: [
+        { value: 'Master', label: 'master' },
+        { value: 'Giocatore', label: 'player' },
+      ],
+      validators: [
+        Validators.required,
+      ],
     }
   ];
   
