@@ -30,8 +30,8 @@ export const globalSignupFormConfig: ValidatorFn[] = [
       label: 'Tipo utente',
       type: 'select',
       options: [
-        { value: 'Master', label: 'master' },
-        { value: 'Giocatore', label: 'player' },
+        { value: 'master', label: 'Master' },
+        { value: 'player', label: 'Giocatore' },
       ],
       validators: [
         Validators.required,

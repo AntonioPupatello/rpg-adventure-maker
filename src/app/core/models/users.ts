@@ -1,3 +1,8 @@
+export enum UserTypes {
+    MASTER = `master`,
+    PLAYER = `player`
+}
+
 export type User = {
     id: number,
     firstName: string,
@@ -8,7 +13,8 @@ export type User = {
     notes: string,
     password?: string,
     confirmPassword?: string,
-    type: 'master' | 'player'
+    type: 'master' | 'player',
+    partyId?: string,
 }
 
 export interface UserAuthRes {
