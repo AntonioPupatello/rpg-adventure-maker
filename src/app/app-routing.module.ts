@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { protectedGuard, unprotectedGuard } from './core/guards/protected.guard';
+import { authGuard, unauthGuard } from './core/guards/user-type.guard';
+import { MasterDashboardComponent } from './features/home/master-dashboard/master-dashboard.component';
+import { PlayerDashboardComponent } from './features/home/player-dashboard/player-dashboard.component';
 
 const routes: Routes = [
   {
@@ -11,7 +14,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule),
-    canActivate: [protectedGuard]
+    canActivate: [protectedGuard, authGuard]
   },
 ];
 
