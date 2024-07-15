@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { protectedGuard, unprotectedGuard } from './core/guards/protected.guard';
-import { authGuard, unauthGuard } from './core/guards/user-type.guard';
-import { MasterDashboardComponent } from './features/home/master-dashboard/master-dashboard.component';
-import { PlayerDashboardComponent } from './features/home/player-dashboard/player-dashboard.component';
+import { userTypeGuard } from './core/guards/user-type.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthFeatureModule),
     canActivate: [unprotectedGuard]
   },
   {
-    path: 'home',
+    path: '',
     loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule),
-    canActivate: [protectedGuard, authGuard]
+    canActivate: [protectedGuard, userTypeGuard]
   },
 ];
 

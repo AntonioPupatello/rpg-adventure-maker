@@ -1,0 +1,7 @@
+
+@if(users$ | async; as users){
+<app-table
+    [data]="users"
+    [columns]="tableConfig"
+/>
+}

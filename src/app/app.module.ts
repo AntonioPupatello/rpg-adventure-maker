@@ -13,10 +13,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthModule } from './core/modules/auth.module';
+import { CharacterDetailComponent } from './feature/home/character-detail/character-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CharacterDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { AuthModule } from './core/modules/auth.module';
   ],
   bootstrap: [AppComponent],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ]
 })
 export class AppModule { }

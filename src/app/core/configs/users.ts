@@ -46,84 +46,36 @@ export const userFormConfig: FormConfig[] = [
       Validators.maxLength(100),
     ],
   },
-  {
-    name: 'type',
-    label: 'Tipo utente',
-    type: 'select',
-    options: [
-      { value: 'master', label: 'Master' },
-      { value: 'player', label: 'Player' },
-    ],
-    validators: [
-      Validators.required,
-    ],
-  }
 ];
 
-export const signupPlayerConfig: FormConfig[] = [
-  ...userFormConfig,
+export const UpdateUserConfig: FormConfig[] = [
   {
-    name: 'partyId',
-    label: 'Codice Party ID',
+    name: 'email',
+    label: 'Indirizzo email',
     type: 'text',
-    validators: [Validators.required],
+    validators: [ Validators.required, Validators.email]
   },
-]
-
-export const userSignupFormConfig: FormConfig[] = [
-  ...userFormConfig,
   {
     name: 'password',
-    label: 'Password',
+    label: 'Password', 
     type: 'password',
-    validators: [Validators.required],
-  },
-  {
-    name: 'confirmPassword',
-    label: 'Conferma Password',
-    type: 'password',
-    validators: [Validators.required],
   }
-];
-
-
-export const userLoginFormConfig: FormConfig[] = [ 
-    {
-        name: 'email',
-        label: 'Indirizzo Email',
-        type: 'text',
-        validators: [Validators.required, Validators.email],
-    },
-    {
-        name: 'password',
-        label: 'Password',
-        type: 'password',
-        validators: [Validators.required],
-    }
 ]
+
+
 
 
 
 export const userTableConfig: TableConfig[] = [
   {
-    name: 'firstName',
-    type: 'text',
-    label: 'Nome',
-  },
-  {
-    name: 'lastName',
-    type: 'text',
-    label: 'Cognome',
-  },
-  {
-    name: 'city',
-    type: 'text',
-    label: 'Città',
-  },
-  {
     name: 'email',
     type: 'text',
-    label: 'Email',
+    label: 'Email'
+  },
+  {
+    name: 'type',
+    type: 'text',
+    label: 'Type'
   },
   {
     name: 'detail',
